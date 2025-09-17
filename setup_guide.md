@@ -30,11 +30,19 @@ This guide will help you set up a complete Typography Agent system that integrat
 ### Step 1: Clone and Setup Project
 
 ```bash
-# Clone from Adobe Corporate GitHub
-git clone https://git.corp.adobe.com/YOUR_USERNAME/typography-agent-illustrator.git
+# Option 1: Clone from Personal GitHub (for development)
+git clone https://github.com/YOUR_USERNAME/typography-agent-illustrator.git
 cd typography-agent-illustrator
 
-# If working with existing local files (current setup)
+# Option 2: Clone from Adobe Corporate GitHub (requires repository creation approval)
+# git clone https://git.corp.adobe.com/YOUR_USERNAME/typography-agent-illustrator.git
+# cd typography-agent-illustrator
+
+# Option 3: Fork from existing colleague repositories
+# git clone https://git.corp.adobe.com/heetp_adobe/typographyAgentCEP.git
+# cd typographyAgentCEP
+
+# Option 4: If working with existing local files (current setup)
 # You're already in the project directory, so just install dependencies
 
 # Install Python dependencies
