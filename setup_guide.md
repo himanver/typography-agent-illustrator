@@ -16,7 +16,7 @@ This guide will help you set up a complete Typography Agent system that integrat
 
 ### Software Requirements
 - **Adobe Illustrator CC 2019 or later**
-- **Python 3.9+**
+- **Python 3.9+** (with pip and venv)
 - **Node.js 16+** (for CEP development)
 - **Git** (for repository management)
 
@@ -24,6 +24,9 @@ This guide will help you set up a complete Typography Agent system that integrat
 - **Visual Studio Code** (recommended IDE)
 - **Adobe CEP SDK** (for extension development)
 - **ExtendScript Toolkit** (for debugging, optional)
+
+### Python Virtual Environment
+This project uses a Python virtual environment to isolate dependencies and avoid conflicts with your system Python installation.
 
 ## 🚀 Installation Steps
 
@@ -45,10 +48,15 @@ cd typography-agent-illustrator
 # Option 4: If working with existing local files (current setup)
 # You're already in the project directory, so just install dependencies
 
-# Install Python dependencies
+# Create and activate Python virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Upgrade pip and install dependencies
+pip install --upgrade pip
 pip install -r requirements.txt
 
-# Install additional dependencies for MCP bridge
+# Install additional dependencies for MCP bridge (if not in requirements.txt)
 pip install fastapi uvicorn websockets
 ```
 
@@ -249,22 +257,50 @@ python server.py --debug
 
 ## 🔄 Development Workflow
 
+### Virtual Environment Management
+
+**Always activate the virtual environment before working:**
+
+```bash
+# Activate virtual environment
+source venv/bin/activate  # macOS/Linux
+# or
+venv\Scripts\activate     # Windows
+
+# Verify you're in the virtual environment (should show (venv) in prompt)
+which python              # Should point to venv/bin/python
+python --version          # Verify Python version
+
+# Install new dependencies
+pip install package_name
+pip freeze > requirements.txt  # Update requirements file
+
+# Deactivate when done
+deactivate
+```
+
 ### Making Changes
 
 1. **CEP Extension Changes**: Edit files in `cep_extension/`, then reload extension in Illustrator
-2. **MCP Server Changes**: Restart the bridge server after changes
+2. **MCP Server Changes**: Restart the bridge server after changes (with venv activated)
 3. **ExtendScript Changes**: Restart Illustrator after modifying `.jsx` files
 
 ### Hot Reload
 
-For faster development:
+For faster development (make sure virtual environment is activated):
 
 ```bash
-# Use nodemon for auto-restart (install with npm install -g nodemon)
-nodemon mcp_bridge_server/server.py
+# Activate virtual environment first
+source venv/bin/activate
 
-# Or use uvicorn's reload feature
-uvicorn mcp_bridge_server.server:app --reload --host 127.0.0.1 --port 3000
+# Use uvicorn's reload feature
+cd mcp_bridge_server
+python server.py
+# or
+uvicorn server:app --reload --host 127.0.0.1 --port 3000
+
+# Use nodemon for auto-restart (install with npm install -g nodemon)
+nodemon --exec python server.py
 ```
 
 ## 🚀 Advanced Configuration
