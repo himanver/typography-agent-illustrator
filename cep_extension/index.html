@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography Agent</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/topcoat-desktop-dark.min.css">
+</head>
+<body class="typography-agent-panel">
+    <div id="app" class="panel-container">
+        <!-- Header -->
+        <div class="panel-header">
+            <div class="logo-container">
+                <img src="./icons/icon-normal.png" alt="Typography Agent" class="logo">
+                <h1 class="panel-title">Typography Agent</h1>
+            </div>
+            <div class="mode-selector">
+                <button id="critic-mode" class="mode-btn" data-mode="critic">Critic</button>
+                <button id="guide-mode" class="mode-btn active" data-mode="guide">Guide</button>
+                <button id="helper-mode" class="mode-btn" data-mode="helper">Helper</button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="panel-content">
+            <!-- Chat Interface -->
+            <div id="chat-container" class="chat-container">
+                <div id="chat-messages" class="chat-messages">
+                    <div class="message agent-message">
+                        <div class="message-content">
+                            <strong>Typography Agent:</strong> Hello! I'm here to help with your typography needs. I can analyze your current design, provide feedback, and automate tedious tasks. What would you like to work on?
+                        </div>
+                        <div class="message-timestamp">Just now</div>
+                    </div>
+                </div>
+                
+                <div class="chat-input-container">
+                    <textarea id="chat-input" placeholder="Ask about typography, request analysis, or describe what you need help with..." rows="3"></textarea>
+                    <button id="send-message" class="send-btn">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M15.854.146a.5.5 0 0 1 .11.54L13.026 8.5l2.938 7.814a.5.5 0 0 1-.11.54.5.5 0 0 1-.54.11L1.5 8.5l13.814-8.464a.5.5 0 0 1 .54-.11z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Actions Panel -->
+            <div id="quick-actions" class="quick-actions">
+                <h3>Quick Actions</h3>
+                <div class="action-grid">
+                    <button class="action-btn" data-action="analyze-selection">
+                        <div class="action-icon">🔍</div>
+                        <div class="action-label">Analyze Selection</div>
+                    </button>
+                    <button class="action-btn" data-action="fix-kerning">
+                        <div class="action-icon">⚡</div>
+                        <div class="action-label">Fix Kerning</div>
+                    </button>
+                    <button class="action-btn" data-action="adjust-hierarchy">
+                        <div class="action-icon">📊</div>
+                        <div class="action-label">Adjust Hierarchy</div>
+                    </button>
+                    <button class="action-btn" data-action="batch-format">
+                        <div class="action-icon">🔄</div>
+                        <div class="action-label">Batch Format</div>
+                    </button>
+                    <button class="action-btn" data-action="readability-check">
+                        <div class="action-icon">👁️</div>
+                        <div class="action-label">Check Readability</div>
+                    </button>
+                    <button class="action-btn" data-action="optical-margins">
+                        <div class="action-icon">📐</div>
+                        <div class="action-label">Optical Margins</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Analysis Results -->
+            <div id="analysis-results" class="analysis-results" style="display: none;">
+                <h3>Analysis Results</h3>
+                <div id="results-content" class="results-content">
+                    <!-- Dynamic content will be populated here -->
+                </div>
+            </div>
+
+            <!-- Settings Panel -->
+            <div id="settings-panel" class="settings-panel" style="display: none;">
+                <h3>Settings</h3>
+                <div class="settings-content">
+                    <div class="setting-group">
+                        <label for="api-key">API Key:</label>
+                        <input type="password" id="api-key" placeholder="Enter your API key">
+                    </div>
+                    <div class="setting-group">
+                        <label for="mcp-server-url">MCP Server URL:</label>
+                        <input type="text" id="mcp-server-url" placeholder="http://localhost:3000" value="http://localhost:3000">
+                    </div>
+                    <div class="setting-group">
+                        <label>
+                            <input type="checkbox" id="auto-analysis" checked>
+                            Auto-analyze on selection change
+                        </label>
+                    </div>
+                    <div class="setting-group">
+                        <label>
+                            <input type="checkbox" id="show-tooltips" checked>
+                            Show helpful tooltips
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="panel-footer">
+            <button id="settings-btn" class="footer-btn">⚙️ Settings</button>
+            <button id="help-btn" class="footer-btn">❓ Help</button>
+            <div class="connection-status">
+                <span id="status-indicator" class="status-indicator disconnected"></span>
+                <span id="status-text">Connecting...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Processing...</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./lib/CSInterface.js"></script>
+    <script src="./js/themeManager.js"></script>
+    <script src="./js/mcpClient.js"></script>
+    <script src="./js/typographyAnalyzer.js"></script>
+    <script src="./js/illustratorInterface.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

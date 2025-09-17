@@ -1,0 +1,40 @@
+# Typography Agent for Adobe Illustrator
+# Core Dependencies
+
+# LLM Integration
+anthropic>=0.7.0
+openai>=1.0.0
+
+# MCP (Model Context Protocol)
+mcp>=0.9.0
+
+# Typography and Font Analysis
+fonttools>=4.42.0
+pillow>=10.0.0
+numpy>=1.24.0
+
+# Adobe Integration
+# Note: CEP integration requires Adobe CEP SDK (separate installation)
+
+# Utilities
+asyncio-mqtt>=0.13.0
+aiofiles>=23.0.0
+pydantic>=2.0.0
+typer>=0.9.0
+rich>=13.0.0
+
+# Development and Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.5.0
+
+# Optional: Web Interface
+fastapi>=0.100.0
+uvicorn>=0.23.0
+websockets>=11.0.0
+
+# Optional: Database for project management
+sqlalchemy>=2.0.0
+alembic>=1.12.0
